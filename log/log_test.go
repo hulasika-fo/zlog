@@ -1,20 +1,19 @@
 package log
 
 import (
+	"fmt"
 	"testing"
 	"time"
-	"fmt"
 )
-
 
 func TestMsgToFile(t *testing.T) {
 	l := NewLogger()
 	l.SetLogFile("tmp/msgToFile")
 	l.SetAdditionalErrorFile(true)
-	l.msgToFile(LogNode{ time.Now(), "控制台和文件中的 debug ", LevelDebug})
-	l.msgToFile(LogNode{ time.Now(), "控制台和文件中的 info", LevelInformational})
-	l.msgToFile(LogNode{ time.Now(), "控制台和文件中的 notice", LevelNotice})
-	l.msgToFile(LogNode{ time.Now(), "控制台和文件中的 error（错误文件中也应该有）", LevelError})
+	_ = l.msgToFile(LogNode{time.Now(), "控制台和文件中的 debug ", LevelDebug})
+	_ = l.msgToFile(LogNode{time.Now(), "控制台和文件中的 info", LevelInformational})
+	_ = l.msgToFile(LogNode{time.Now(), "控制台和文件中的 notice", LevelNotice})
+	_ = l.msgToFile(LogNode{time.Now(), "控制台和文件中的 error（错误文件中也应该有）", LevelError})
 
 	fmt.Println("检查一下tmp目录下对应的两个文件")
 }
@@ -28,7 +27,6 @@ func TestMsgOut(t *testing.T) {
 	l.msgOut(LevelInformational, "不应该出现在控制台的 info")
 	l.msgOut(LevelNotice, "不应该出现在控制台的 notice")
 	l.msgOut(LevelError, "不应该出现在控制台的 error")
-
 
 	fmt.Println("检查一下tmp目录下对应的msgOut文件")
 }

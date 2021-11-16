@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/15125505/zlog/log"
+	"github.com/hulasika-fo/zlog/log"
 )
 
 func main() {
