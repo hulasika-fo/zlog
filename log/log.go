@@ -19,10 +19,10 @@ import (
 )
 
 const (
-	LevelDebug = iota
-	LevelInformational
+	LevelError = iota
 	LevelNotice
-	LevelError
+	LevelInformational
+	LevelDebug
 )
 
 const maxChanCount = 10000 // 缓冲区最多存放10000条数据
